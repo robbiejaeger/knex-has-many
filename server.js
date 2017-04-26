@@ -1,5 +1,6 @@
 var path = require('path')
 var express = require('express')
+var logger = require('morgan')
 var router = require('./router')
 var app = express()
 
@@ -7,6 +8,10 @@ app.set('port', process.env.PORT || 3000);
 
 var staticPath = path.join(__dirname, '/public')
 app.use(express.static(staticPath))
+
+if (process.env.NODE_ENV !== 'test') {
+  app.use(logger('dev'));
+}
 
 app.use('/api/v1', router)
 
