@@ -2,6 +2,8 @@
 
 Experiments with ExpressJS backend API and Knex one-to-many and many-to-many relationships. The premise of this app is blog posts with comments (one-to-many) and categories (many-to-many).
 
+File structure modeled after Rails structure (controllers, models, routes).
+
 ## Setup
 
 1. Clone this repo and `cd` into the new directory.
