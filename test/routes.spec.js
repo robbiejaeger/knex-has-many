@@ -66,6 +66,7 @@ describe('API Routes', function(){
           res.should.have.status(200)
           res.should.be.json
           res.body.should.be.a('array')
+          res.body.length.should.equal(1)
           res.body[0].should.have.property('title')
           res.body[0].title.should.equal('Post 2')
           res.body[0].should.have.property('body')
