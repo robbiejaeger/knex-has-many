@@ -1,7 +1,7 @@
-var postQueries = require('../models/post')
+var queries = require('../models/post')
 
-function index(res, res, next){
-  postQueries.getAll()
+function index(req, res, next){
+  queries.getAll()
   .then(function(posts){
     res.status(200).json(posts)
   })
@@ -10,6 +10,22 @@ function index(res, res, next){
   })
 }
 
+function remove(req, res, next){
+  queries.getSingle(req.params.id)
+  .then(function(post){
+    queries.deleteItem(req.params.id)
+    .then(function(){
+      res.status(200).json(post)
+    })
+    .catch(function(error){
+      next(error)
+    })
+  }).catch(function(error){
+    next(error)
+  })
+}
+
 module.exports = {
-  index: index
+  index: index,
+  remove: remove
 }
